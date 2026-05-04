@@ -14,23 +14,23 @@
                           │  Kafka topic: application-logs
                           ▼
 ┌─────────────────────────────────────────────────────────────────────┐
-│                    LogSentinel Backend  (FastAPI)                    │
+│                    LogSentinel Backend  (FastAPI)                   │
 │                                                                     │
 │   AIOKafka Consumer                                                 │
 │       │                                                             │
 │       ▼                                                             │
 │   Anomaly Service                                                   │
-│   ┌──────────────────────────────────────────────────────────┐     │
-│   │  SBERT encode (all-MiniLM-L6-v2, 384-dim)               │     │
-│   │  → kNN search against normal-log embeddings in ES        │     │
-│   │  → mean cosine distance → severity (low/medium/high)     │     │
-│   └──────────────────────────────────────────────────────────┘     │
+│   ┌──────────────────────────────────────────────────────────┐      │
+│   │  SBERT encode (all-MiniLM-L6-v2, 384-dim)               │       │
+│   │  → kNN search against normal-log embeddings in ES        │      │
+│   │  → mean cosine distance → severity (low/medium/high)     │      │
+│   └──────────────────────────────────────────────────────────┘      │
 │       │                                                             │
 │       ├─── index log + embedding → Elasticsearch (logs)             │
 │       ├─── index anomaly doc     → Elasticsearch (anomalies)        │
 │       └─── dispatch webhook      → Alert Rules (PostgreSQL)         │
 │                                                                     │
-│   REST API:  /api/v1/anomalies  · /api/v1/alerts  · /api/v1/metrics│
+│   REST API:  /api/v1/anomalies  · /api/v1/alerts  · /api/v1/metrics │
 │   Metrics:   /metrics  (Prometheus scrape target)                   │
 └─────────────────────┬───────────────────────────────────────────────┘
                       │
