@@ -1,6 +1,6 @@
 # LogSentinel
 
-**Real-time log anomaly detection pipeline** — streaming ingestion via Kafka, semantic scoring with Sentence-BERT, sub-200ms full-text search via Elasticsearch, and live observability through Prometheus + Grafana.
+**Real-time log anomaly detection pipeline**: streaming ingestion via Kafka, semantic scoring with Sentence-BERT, sub-200ms full-text search via Elasticsearch, and live observability through Prometheus + Grafana.
 
 ---
 
